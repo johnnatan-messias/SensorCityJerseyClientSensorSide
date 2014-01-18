@@ -3,12 +3,12 @@ package data;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-public class AtmPressureData {
+public class Humidity {
 
 	private long id;
 	private double value;
 
-	public AtmPressureData() {
+	public Humidity() {
 	}
 
 	public long getId() {
@@ -26,5 +26,4 @@ public class AtmPressureData {
 	public void setValue(double value) {
 		this.value = value;
 	}
-
 }

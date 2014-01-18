@@ -4,7 +4,7 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-public class UsersData {
+public class Users {
 
 	private long id;
 
@@ -21,9 +21,9 @@ public class UsersData {
 	private String facebook;
 	private long phone;
 
-	protected AddressData address;
+	protected Address address;
 
-	public UsersData() {
+	public Users() {
 	}
 
 	@XmlAttribute(name = "id")
@@ -64,7 +64,7 @@ public class UsersData {
 	}
 
 	//@XmlInverseReference(mappedBy = "users")
-	public AddressData getAddress() {
+	public Address getAddress() {
 		return address;
 	}
 
@@ -104,7 +104,7 @@ public class UsersData {
 		this.phone = phone;
 	}
 
-	public void setAddress(AddressData address) {
+	public void setAddress(Address address) {
 		this.address = address;
 	}
 

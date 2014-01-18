@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-public class AddressData {
+public class Address {
 
 	private long id;
 	private String zip;
@@ -22,14 +22,14 @@ public class AddressData {
 
 	@XmlElementWrapper(name = "users")
 	@XmlElement(name = "user")
-	private List<UsersData> users; // 1 User just can have 1 Address. 1 Address
+	private List<Users> users; // 1 User just can have 1 Address. 1 Address
 									// can
 
 	@XmlElementWrapper(name = "sensors")
 	@XmlElement(name = "sensor")
-	private List<SensorData> sensors; // 1 Sensor just can have 1 Address.
+	private List<Sensor> sensors; // 1 Sensor just can have 1 Address.
 
-	public AddressData() {
+	public Address() {
 	}
 
 	@XmlAttribute(name = "id")
@@ -69,11 +69,11 @@ public class AddressData {
 		return neighbour;
 	}
 
-	public List<UsersData> getUsers() {
+	public List<Users> getUsers() {
 		return users;
 	}
 
-	public List<SensorData> getSensors() {
+	public List<Sensor> getSensors() {
 		return sensors;
 	}
 
@@ -113,11 +113,11 @@ public class AddressData {
 		this.neighbour = neighbour;
 	}
 
-	public void setUsers(List<UsersData> users) {
+	public void setUsers(List<Users> users) {
 		this.users = users;
 	}
 
-	public void setSensors(List<SensorData> sensors) {
+	public void setSensors(List<Sensor> sensors) {
 		this.sensors = sensors;
 	}
 

@@ -6,16 +6,16 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-public class SensorData {
+public class Sensor {
 
 	protected long id;
 	protected String name;
 
 	protected Date timestamp;
 
-	protected AddressData address;
+	protected Address address;
 
-	public SensorData() {
+	public Sensor() {
 	}
 
 	@XmlAttribute(name = "id")
@@ -28,11 +28,11 @@ public class SensorData {
 	}
 
 	//@XmlInverseReference(mappedBy = "sensors")
-	public AddressData getAddress() {
+	public Address getAddress() {
 		return address;
 	}
 
-	public void setAddress(AddressData address) {
+	public void setAddress(Address address) {
 		this.address = address;
 	}
 

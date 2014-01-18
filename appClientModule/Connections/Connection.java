@@ -9,15 +9,15 @@ import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
 
-import data.AddressData;
-import data.AtmPressureData;
-import data.AudioData;
-import data.GPSData;
-import data.HumidityData;
-import data.LuminosityData;
-import data.SensorData;
-import data.TemperatureData;
-import data.UsersData;
+import data.Address;
+import data.AtmPressure;
+import data.Audio;
+import data.GPS;
+import data.Humidity;
+import data.Luminosity;
+import data.Sensor;
+import data.Temperature;
+import data.Users;
 
 public class Connection {
 
@@ -38,27 +38,27 @@ public class Connection {
 		return con;
 	}
 
-	public void createTemperature(TemperatureData temperature) {
+	public void createTemperature(Temperature temperature) {
 		target = client.target(URL + "sensor/type/temperature");
 		target.request().post(
 				Entity.entity(temperature, MediaType.APPLICATION_XML),
-				TemperatureData.class);
+				Temperature.class);
 
 	}
 
-	public TemperatureData readTemperature(long id) {
+	public Temperature readTemperature(long id) {
 		target = client.target(URL + "sensor/type/temperature/get?id=" + id);
-		TemperatureData temperature = target.request(MediaType.APPLICATION_XML)
-				.get(TemperatureData.class);
+		Temperature temperature = target.request(MediaType.APPLICATION_XML)
+				.get(Temperature.class);
 		return temperature;
 
 	}
 
-	public void updateTemperature(TemperatureData temperature) {
+	public void updateTemperature(Temperature temperature) {
 		target = client.target(URL + "sensor/type/temperature");
 		target.request().put(
 				Entity.entity(temperature, MediaType.APPLICATION_XML),
-				TemperatureData.class);
+				Temperature.class);
 	}
 
 	public void deleteTemperature(long id) {
@@ -67,36 +67,36 @@ public class Connection {
 
 	}
 
-	public List<TemperatureData> findTemperature() {
+	public List<Temperature> findTemperature() {
 		target = client.target(URL + "sensor/type/temperature/get/temperature");
-		GenericType<List<TemperatureData>> list = new GenericType<List<TemperatureData>>() {
+		GenericType<List<Temperature>> list = new GenericType<List<Temperature>>() {
 		};
-		List<TemperatureData> temperatures = target.request(
+		List<Temperature> temperatures = target.request(
 				MediaType.APPLICATION_XML).get(list);
 		return temperatures;
 	}
 
-	public void createHumidity(HumidityData humidity) {
+	public void createHumidity(Humidity humidity) {
 		target = client.target(URL + "sensor/type/humidity");
 		target.request().post(
 				Entity.entity(humidity, MediaType.APPLICATION_XML),
-				HumidityData.class);
+				Humidity.class);
 
 	}
 
-	public HumidityData readHumidity(long id) {
+	public Humidity readHumidity(long id) {
 		target = client.target(URL + "sensor/type/humidity/get?id=" + id);
-		HumidityData humidity = target.request(MediaType.APPLICATION_XML).get(
-				HumidityData.class);
+		Humidity humidity = target.request(MediaType.APPLICATION_XML).get(
+				Humidity.class);
 		return humidity;
 
 	}
 
-	public void updateHumidity(HumidityData humidity) {
+	public void updateHumidity(Humidity humidity) {
 		target = client.target(URL + "sensor/type/humidity");
 		target.request().put(
 				Entity.entity(humidity, MediaType.APPLICATION_XML),
-				HumidityData.class);
+				Humidity.class);
 	}
 
 	public void deleteHumidity(long id) {
@@ -105,36 +105,36 @@ public class Connection {
 
 	}
 
-	public List<HumidityData> findHumidity() {
+	public List<Humidity> findHumidity() {
 		target = client.target(URL + "sensor/type/humidity/get/humidity");
-		GenericType<List<HumidityData>> list = new GenericType<List<HumidityData>>() {
+		GenericType<List<Humidity>> list = new GenericType<List<Humidity>>() {
 		};
-		List<HumidityData> humiditys = target
+		List<Humidity> humiditys = target
 				.request(MediaType.APPLICATION_XML).get(list);
 		return humiditys;
 	}
 
-	public void createAtmPressure(AtmPressureData atmPressure) {
+	public void createAtmPressure(AtmPressure atmPressure) {
 		target = client.target(URL + "sensor/type/atmPressure");
 		target.request().post(
 				Entity.entity(atmPressure, MediaType.APPLICATION_XML),
-				AtmPressureData.class);
+				AtmPressure.class);
 
 	}
 
-	public AtmPressureData readAtmPressure(long id) {
+	public AtmPressure readAtmPressure(long id) {
 		target = client.target(URL + "sensor/type/atmPressure/get?id=" + id);
-		AtmPressureData atmPressure = target.request(MediaType.APPLICATION_XML)
-				.get(AtmPressureData.class);
+		AtmPressure atmPressure = target.request(MediaType.APPLICATION_XML)
+				.get(AtmPressure.class);
 		return atmPressure;
 
 	}
 
-	public void updateAtmPressure(AtmPressureData atmPressure) {
+	public void updateAtmPressure(AtmPressure atmPressure) {
 		target = client.target(URL + "sensor/type/atmPressure");
 		target.request().put(
 				Entity.entity(atmPressure, MediaType.APPLICATION_XML),
-				AtmPressureData.class);
+				AtmPressure.class);
 	}
 
 	public void deleteAtmPressure(long id) {
@@ -143,34 +143,34 @@ public class Connection {
 
 	}
 
-	public List<AtmPressureData> findAtmPressure() {
+	public List<AtmPressure> findAtmPressure() {
 		target = client.target(URL + "sensor/type/atmPressure/get/atmPressure");
-		GenericType<List<AtmPressureData>> list = new GenericType<List<AtmPressureData>>() {
+		GenericType<List<AtmPressure>> list = new GenericType<List<AtmPressure>>() {
 		};
-		List<AtmPressureData> atmPressures = target.request(
+		List<AtmPressure> atmPressures = target.request(
 				MediaType.APPLICATION_XML).get(list);
 		return atmPressures;
 	}
 
-	public void createAudio(AudioData audio) {
+	public void createAudio(Audio audio) {
 		target = client.target(URL + "sensor/type/audio");
 		target.request().post(Entity.entity(audio, MediaType.APPLICATION_XML),
-				AudioData.class);
+				Audio.class);
 
 	}
 
-	public AudioData readAudio(long id) {
+	public Audio readAudio(long id) {
 		target = client.target(URL + "sensor/type/audio/get?id=" + id);
-		AudioData audio = target.request(MediaType.APPLICATION_XML).get(
-				AudioData.class);
+		Audio audio = target.request(MediaType.APPLICATION_XML).get(
+				Audio.class);
 		return audio;
 
 	}
 
-	public void updateAudio(AudioData audio) {
+	public void updateAudio(Audio audio) {
 		target = client.target(URL + "sensor/type/audio");
 		target.request().put(Entity.entity(audio, MediaType.APPLICATION_XML),
-				AudioData.class);
+				Audio.class);
 	}
 
 	public void deleteAudio(long id) {
@@ -179,34 +179,34 @@ public class Connection {
 
 	}
 
-	public List<AudioData> findAudio() {
+	public List<Audio> findAudio() {
 		target = client.target(URL + "sensor/type/audio/get/audio");
-		GenericType<List<AudioData>> list = new GenericType<List<AudioData>>() {
+		GenericType<List<Audio>> list = new GenericType<List<Audio>>() {
 		};
-		List<AudioData> audios = target.request(MediaType.APPLICATION_XML).get(
+		List<Audio> audios = target.request(MediaType.APPLICATION_XML).get(
 				list);
 		return audios;
 	}
 
-	public void createGPS(GPSData gps) {
+	public void createGPS(GPS gps) {
 		target = client.target(URL + "sensor/type/gps");
 		target.request().post(Entity.entity(gps, MediaType.APPLICATION_XML),
-				GPSData.class);
+				GPS.class);
 
 	}
 
-	public GPSData readGPS(long id) {
+	public GPS readGPS(long id) {
 		target = client.target(URL + "sensor/type/gps/get?id=" + id);
-		GPSData gps = target.request(MediaType.APPLICATION_XML).get(
-				GPSData.class);
+		GPS gps = target.request(MediaType.APPLICATION_XML).get(
+				GPS.class);
 		return gps;
 
 	}
 
-	public void updateGPS(GPSData gps) {
+	public void updateGPS(GPS gps) {
 		target = client.target(URL + "sensor/type/gps");
 		target.request().put(Entity.entity(gps, MediaType.APPLICATION_XML),
-				GPSData.class);
+				GPS.class);
 	}
 
 	public void deleteGPS(long id) {
@@ -215,36 +215,36 @@ public class Connection {
 
 	}
 
-	public List<GPSData> findGPS() {
+	public List<GPS> findGPS() {
 		target = client.target(URL + "sensor/type/gps/get/gps");
-		GenericType<List<GPSData>> list = new GenericType<List<GPSData>>() {
+		GenericType<List<GPS>> list = new GenericType<List<GPS>>() {
 		};
-		List<GPSData> gpss = target.request(MediaType.APPLICATION_XML)
+		List<GPS> gpss = target.request(MediaType.APPLICATION_XML)
 				.get(list);
 		return gpss;
 	}
 
-	public void createLuminosity(LuminosityData luminosity) {
+	public void createLuminosity(Luminosity luminosity) {
 		target = client.target(URL + "sensor/type/luminosity");
 		target.request().post(
 				Entity.entity(luminosity, MediaType.APPLICATION_XML),
-				LuminosityData.class);
+				Luminosity.class);
 
 	}
 
-	public LuminosityData readLuminosity(long id) {
+	public Luminosity readLuminosity(long id) {
 		target = client.target(URL + "sensor/type/luminosity/get?id=" + id);
-		LuminosityData luminosity = target.request(MediaType.APPLICATION_XML)
-				.get(LuminosityData.class);
+		Luminosity luminosity = target.request(MediaType.APPLICATION_XML)
+				.get(Luminosity.class);
 		return luminosity;
 
 	}
 
-	public void updateLuminosity(LuminosityData luminosity) {
+	public void updateLuminosity(Luminosity luminosity) {
 		target = client.target(URL + "sensor/type/luminosity");
 		target.request().put(
 				Entity.entity(luminosity, MediaType.APPLICATION_XML),
-				LuminosityData.class);
+				Luminosity.class);
 	}
 
 	public void deleteLuminosity(long id) {
@@ -253,34 +253,34 @@ public class Connection {
 
 	}
 
-	public List<LuminosityData> findLuminosity() {
+	public List<Luminosity> findLuminosity() {
 		target = client.target(URL + "sensor/type/luminosity/get/luminosity");
-		GenericType<List<LuminosityData>> list = new GenericType<List<LuminosityData>>() {
+		GenericType<List<Luminosity>> list = new GenericType<List<Luminosity>>() {
 		};
-		List<LuminosityData> luminositys = target.request(
+		List<Luminosity> luminositys = target.request(
 				MediaType.APPLICATION_XML).get(list);
 		return luminositys;
 	}
 
-	public void createAddress(AddressData address) {
+	public void createAddress(Address address) {
 		target = client.target(URL + "address");
 		target.request().post(
 				Entity.entity(address, MediaType.APPLICATION_XML),
-				AddressData.class);
+				Address.class);
 	}
 
-	public AddressData readAddress(long id) {
+	public Address readAddress(long id) {
 		target = client.target(URL + "address/get?id=" + id);
-		AddressData address = target.request(MediaType.APPLICATION_XML).get(
-				AddressData.class);
+		Address address = target.request(MediaType.APPLICATION_XML).get(
+				Address.class);
 		return address;
 
 	}
 
-	public void updateAddress(AddressData address) {
+	public void updateAddress(Address address) {
 		target = client.target(URL + "address");
 		target.request().put(Entity.entity(address, MediaType.APPLICATION_XML),
-				AddressData.class);
+				Address.class);
 	}
 
 	public void deleteAddress(long id) {
@@ -289,49 +289,49 @@ public class Connection {
 
 	}
 
-	public List<AddressData> findAddress() {
+	public List<Address> findAddress() {
 		target = client.target(URL + "address/get/addresses");
-		GenericType<List<AddressData>> list = new GenericType<List<AddressData>>() {
+		GenericType<List<Address>> list = new GenericType<List<Address>>() {
 		};
-		List<AddressData> addresses = target.request(MediaType.APPLICATION_XML)
+		List<Address> addresses = target.request(MediaType.APPLICATION_XML)
 				.get(list);
 		return addresses;
 	}
 
-	public AddressData readAddressByStreet(String street) {
+	public Address readAddressByStreet(String street) {
 		target = client.target(URL + "address/get/bystreet?street=" + street);
-		AddressData address = target.request(MediaType.APPLICATION_XML).get(
-				AddressData.class);
+		Address address = target.request(MediaType.APPLICATION_XML).get(
+				Address.class);
 		return address;
 	}
 
-	public List<SensorData> findSensorByAddress(long id) {
+	public List<Sensor> findSensorByAddress(long id) {
 		target = client.target(URL + "address/get/sensors?id=" + id);
-		GenericType<List<SensorData>> list = new GenericType<List<SensorData>>() {
+		GenericType<List<Sensor>> list = new GenericType<List<Sensor>>() {
 		};
-		List<SensorData> sensors = target.request(MediaType.APPLICATION_XML)
+		List<Sensor> sensors = target.request(MediaType.APPLICATION_XML)
 				.get(list);
 		return sensors;
 	}
 
-	public void createUser(UsersData user) {
+	public void createUser(Users user) {
 		target = client.target(URL + "user");
 		target.request().post(Entity.entity(user, MediaType.APPLICATION_XML),
-				UsersData.class);
+				Users.class);
 	}
 
-	public UsersData readUser(long id) {
+	public Users readUser(long id) {
 		target = client.target(URL + "user/get?id=" + id);
-		UsersData user = target.request(MediaType.APPLICATION_XML).get(
-				UsersData.class);
+		Users user = target.request(MediaType.APPLICATION_XML).get(
+				Users.class);
 		return user;
 
 	}
 
-	public void updateUser(UsersData user) {
+	public void updateUser(Users user) {
 		target = client.target(URL + "user");
 		target.request().put(Entity.entity(user, MediaType.APPLICATION_XML),
-				UsersData.class);
+				Users.class);
 	}
 
 	public void deleteUser(long id) {
@@ -340,20 +340,20 @@ public class Connection {
 
 	}
 
-	public List<UsersData> findUser() {
+	public List<Users> findUser() {
 		target = client.target(URL + "user/get/users");
-		GenericType<List<UsersData>> list = new GenericType<List<UsersData>>() {
+		GenericType<List<Users>> list = new GenericType<List<Users>>() {
 		};
-		List<UsersData> users = target.request(MediaType.APPLICATION_XML).get(
+		List<Users> users = target.request(MediaType.APPLICATION_XML).get(
 				list);
 		return users;
 	}
 
-	public UsersData readUserByDocument(String document) {
+	public Users readUserByDocument(String document) {
 		target = client
 				.target(URL + "user/get/bydocument?document=" + document);
-		UsersData user = target.request(MediaType.APPLICATION_XML).get(
-				UsersData.class);
+		Users user = target.request(MediaType.APPLICATION_XML).get(
+				Users.class);
 		return user;
 	}
 

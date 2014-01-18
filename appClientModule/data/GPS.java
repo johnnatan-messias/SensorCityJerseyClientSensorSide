@@ -3,12 +3,12 @@ package data;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-public class GPSData {
+public class GPS {
 	private long id;
 	private double latitude;
 	private double longitude;
 
-	public GPSData() {
+	public GPS() {
 	}
 
 	public long getId() {

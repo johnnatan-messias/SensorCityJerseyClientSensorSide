@@ -3,12 +3,13 @@ package data;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-public class LuminosityData {
+public class Temperature {
 
 	private long id;
 	private double value;
 
-	public LuminosityData() {
+	public Temperature() {
+
 	}
 
 	public long getId() {
