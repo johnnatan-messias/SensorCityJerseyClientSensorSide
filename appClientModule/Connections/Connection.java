@@ -22,7 +22,8 @@ import data.Users;
 public class Connection {
 
 	private static Connection con = null;
-	private String URL = "http://localhost:8080/EJBSensorCity/rest/";
+	// private String URL = "http://192.168.1.76:8080/EJBSensorCity/rest/";
+	private String URL;
 
 	private Client client;
 	private WebTarget target;
@@ -36,6 +37,14 @@ public class Connection {
 			con = new Connection();
 		}
 		return con;
+	}
+
+	public void setServer(String ip, int port) {
+		URL = "http://" + ip + ":" + port + "/EJBSensorCity/rest/";
+	}
+	
+	public String getServer(){
+		return this.URL;
 	}
 
 	public void createTemperature(Temperature temperature) {
@@ -109,8 +118,8 @@ public class Connection {
 		target = client.target(URL + "sensor/type/humidity/get/humidity");
 		GenericType<List<Humidity>> list = new GenericType<List<Humidity>>() {
 		};
-		List<Humidity> humiditys = target
-				.request(MediaType.APPLICATION_XML).get(list);
+		List<Humidity> humiditys = target.request(MediaType.APPLICATION_XML)
+				.get(list);
 		return humiditys;
 	}
 
@@ -161,8 +170,8 @@ public class Connection {
 
 	public Audio readAudio(long id) {
 		target = client.target(URL + "sensor/type/audio/get?id=" + id);
-		Audio audio = target.request(MediaType.APPLICATION_XML).get(
-				Audio.class);
+		Audio audio = target.request(MediaType.APPLICATION_XML)
+				.get(Audio.class);
 		return audio;
 
 	}
@@ -183,8 +192,8 @@ public class Connection {
 		target = client.target(URL + "sensor/type/audio/get/audio");
 		GenericType<List<Audio>> list = new GenericType<List<Audio>>() {
 		};
-		List<Audio> audios = target.request(MediaType.APPLICATION_XML).get(
-				list);
+		List<Audio> audios = target.request(MediaType.APPLICATION_XML)
+				.get(list);
 		return audios;
 	}
 
@@ -197,8 +206,7 @@ public class Connection {
 
 	public GPS readGPS(long id) {
 		target = client.target(URL + "sensor/type/gps/get?id=" + id);
-		GPS gps = target.request(MediaType.APPLICATION_XML).get(
-				GPS.class);
+		GPS gps = target.request(MediaType.APPLICATION_XML).get(GPS.class);
 		return gps;
 
 	}
@@ -219,8 +227,7 @@ public class Connection {
 		target = client.target(URL + "sensor/type/gps/get/gps");
 		GenericType<List<GPS>> list = new GenericType<List<GPS>>() {
 		};
-		List<GPS> gpss = target.request(MediaType.APPLICATION_XML)
-				.get(list);
+		List<GPS> gpss = target.request(MediaType.APPLICATION_XML).get(list);
 		return gpss;
 	}
 
@@ -234,8 +241,8 @@ public class Connection {
 
 	public Luminosity readLuminosity(long id) {
 		target = client.target(URL + "sensor/type/luminosity/get?id=" + id);
-		Luminosity luminosity = target.request(MediaType.APPLICATION_XML)
-				.get(Luminosity.class);
+		Luminosity luminosity = target.request(MediaType.APPLICATION_XML).get(
+				Luminosity.class);
 		return luminosity;
 
 	}
@@ -257,8 +264,8 @@ public class Connection {
 		target = client.target(URL + "sensor/type/luminosity/get/luminosity");
 		GenericType<List<Luminosity>> list = new GenericType<List<Luminosity>>() {
 		};
-		List<Luminosity> luminositys = target.request(
-				MediaType.APPLICATION_XML).get(list);
+		List<Luminosity> luminositys = target
+				.request(MediaType.APPLICATION_XML).get(list);
 		return luminositys;
 	}
 
@@ -309,8 +316,8 @@ public class Connection {
 		target = client.target(URL + "address/get/sensors?id=" + id);
 		GenericType<List<Sensor>> list = new GenericType<List<Sensor>>() {
 		};
-		List<Sensor> sensors = target.request(MediaType.APPLICATION_XML)
-				.get(list);
+		List<Sensor> sensors = target.request(MediaType.APPLICATION_XML).get(
+				list);
 		return sensors;
 	}
 
@@ -322,8 +329,7 @@ public class Connection {
 
 	public Users readUser(long id) {
 		target = client.target(URL + "user/get?id=" + id);
-		Users user = target.request(MediaType.APPLICATION_XML).get(
-				Users.class);
+		Users user = target.request(MediaType.APPLICATION_XML).get(Users.class);
 		return user;
 
 	}
@@ -344,16 +350,14 @@ public class Connection {
 		target = client.target(URL + "user/get/users");
 		GenericType<List<Users>> list = new GenericType<List<Users>>() {
 		};
-		List<Users> users = target.request(MediaType.APPLICATION_XML).get(
-				list);
+		List<Users> users = target.request(MediaType.APPLICATION_XML).get(list);
 		return users;
 	}
 
 	public Users readUserByDocument(String document) {
 		target = client
 				.target(URL + "user/get/bydocument?document=" + document);
-		Users user = target.request(MediaType.APPLICATION_XML).get(
-				Users.class);
+		Users user = target.request(MediaType.APPLICATION_XML).get(Users.class);
 		return user;
 	}
 
