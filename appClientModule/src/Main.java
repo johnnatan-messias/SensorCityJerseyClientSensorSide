@@ -1,20 +1,41 @@
 package src;
 
-import Connections.Connection;
-import data.Audio;
+import sensor.SerialTest;
+
 
 public class Main {
+	protected static long id1=1;
+	protected static long id2=2;
+	protected static long id3=3;
+	protected static long id4=4;
+	protected static long id5=5;
+	protected static int idx=0;
+	
+	
+//	protected UpdateSensorData updateSD;
+	
+	public static void main(String[] args) 
+	{
+		
+		switch(idx) 
+		{
+		case 1 :SetInitialDatabase sensor1 = new SetInitialDatabase(id1);
+				break;
+		case 2 :SetInitialDatabase sensor2 = new SetInitialDatabase(id2);
+				break;
+		case 3 :SetInitialDatabase sensor3 = new SetInitialDatabase(id3);
+				break;
+		case 4 :SetInitialDatabase sensor4 = new SetInitialDatabase(id4);
+				break;
+		case 5 :SetInitialDatabase sensor5 = new SetInitialDatabase(id5);
+				break;
+		default :System.out.println("No new sensor create.");
+		}
+		
+		//get data from sensor
+		SerialTest main = new SerialTest();	
+		main.initialize();
 
-	public static void main(String[] args) {
-
-		Connection con = Connection.getInstance();
-		Audio a = new Audio();
-		a.setId(2);
-		a.setValue(4.23);
-		con.createAudio(a);
-		Audio audio = con.readAudio(2);
-		audio.setValue(5.65);
-		con.updateAudio(audio);
-		System.out.println(con.readAudio(2).getValue());
+		System.out.println("Started");
 	}
 }
