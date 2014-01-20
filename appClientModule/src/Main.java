@@ -9,7 +9,7 @@ public class Main {
 	protected static long id3 = 3;
 	protected static long id4 = 4;
 	protected static long id5 = 5;
-	protected static int idx = 0;
+	protected static int idx;
 
 	// protected UpdateSensorData updateSD;
 
@@ -18,12 +18,14 @@ public class Main {
 
 		if (args.length != 0) {
 			con.setServer(args[0], Integer.valueOf(args[1]));
+			idx = Integer.valueOf(args[2]);
 
 		} else {
 			con.setServer("localhost", 8080);
+			idx = 0;
 		}
 		System.out.println(Connection.getInstance().getServer());
-		
+
 		System.setProperty("gnu.io.rxtx.SerialPorts", "/dev/ttyACM0");
 		switch (idx) {
 		case 1:
