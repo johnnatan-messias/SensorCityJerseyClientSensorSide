@@ -17,7 +17,6 @@ import data.Humidity;
 import data.Luminosity;
 import data.Sensor;
 import data.Temperature;
-import data.Users;
 
 public class Connection {
 
@@ -319,46 +318,6 @@ public class Connection {
 		List<Sensor> sensors = target.request(MediaType.APPLICATION_XML).get(
 				list);
 		return sensors;
-	}
-
-	public void createUser(Users user) {
-		target = client.target(URL + "user");
-		target.request().post(Entity.entity(user, MediaType.APPLICATION_XML),
-				Users.class);
-	}
-
-	public Users readUser(long id) {
-		target = client.target(URL + "user/get?id=" + id);
-		Users user = target.request(MediaType.APPLICATION_XML).get(Users.class);
-		return user;
-
-	}
-
-	public void updateUser(Users user) {
-		target = client.target(URL + "user");
-		target.request().put(Entity.entity(user, MediaType.APPLICATION_XML),
-				Users.class);
-	}
-
-	public void deleteUser(long id) {
-		target = client.target(URL + "user/del?id=" + id);
-		target.request().delete();
-
-	}
-
-	public List<Users> findUser() {
-		target = client.target(URL + "user/get/users");
-		GenericType<List<Users>> list = new GenericType<List<Users>>() {
-		};
-		List<Users> users = target.request(MediaType.APPLICATION_XML).get(list);
-		return users;
-	}
-
-	public Users readUserByDocument(String document) {
-		target = client
-				.target(URL + "user/get/bydocument?document=" + document);
-		Users user = target.request(MediaType.APPLICATION_XML).get(Users.class);
-		return user;
 	}
 
 	public void createSensor(Sensor sensor) {

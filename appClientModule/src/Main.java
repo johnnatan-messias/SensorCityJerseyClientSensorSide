@@ -15,7 +15,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		Connection con = Connection.getInstance();
-
+		System.out.println(util.DateUtil.getLocalDate());
 		if (args.length != 0) {
 			con.setServer(args[0], Integer.valueOf(args[1]));
 			idx = Integer.valueOf(args[2]);
@@ -26,7 +26,7 @@ public class Main {
 		}
 		System.out.println(Connection.getInstance().getServer());
 
-		System.setProperty("gnu.io.rxtx.SerialPorts", "/dev/ttyACM0");
+		//System.setProperty("gnu.io.rxtx.SerialPorts", "/dev/ttyACM0");
 		switch (idx) {
 		case 1:
 			SetInitialDatabase sensor1 = new SetInitialDatabase(id1);
@@ -49,7 +49,7 @@ public class Main {
 
 		// get data from sensor
 		SerialTest main = new SerialTest();
-		main.initialize();
+		main.initialize(idx);
 
 		System.out.println("Started");
 	}

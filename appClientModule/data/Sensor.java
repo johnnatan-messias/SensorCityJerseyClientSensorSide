@@ -1,6 +1,6 @@
 package data;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;

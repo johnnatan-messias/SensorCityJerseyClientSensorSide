@@ -1,10 +1,9 @@
 package data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
@@ -20,14 +19,10 @@ public class Address {
 	private String country;
 	private String neighbour;
 
-	@XmlElementWrapper(name = "users")
-	@XmlElement(name = "user")
-	private List<Users> users; // 1 User just can have 1 Address. 1 Address
-									// can
-
-	@XmlElementWrapper(name = "sensors")
-	@XmlElement(name = "sensor")
-	private List<Sensor> sensors; // 1 Sensor just can have 1 Address.
+	// @XmlElementWrapper(name = "sensors")
+	 //@XmlElement(name = "sensor")
+	private List<Sensor> sensors = new ArrayList<Sensor>(); // 1 Sensor just can
+															// have 1 Address.
 
 	public Address() {
 	}
@@ -69,10 +64,6 @@ public class Address {
 		return neighbour;
 	}
 
-	public List<Users> getUsers() {
-		return users;
-	}
-
 	public List<Sensor> getSensors() {
 		return sensors;
 	}
@@ -111,10 +102,6 @@ public class Address {
 
 	public void setNeighbour(String neighbour) {
 		this.neighbour = neighbour;
-	}
-
-	public void setUsers(List<Users> users) {
-		this.users = users;
 	}
 
 	public void setSensors(List<Sensor> sensors) {

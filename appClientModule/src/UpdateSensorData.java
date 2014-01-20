@@ -6,6 +6,7 @@ import data.AtmPressure;
 import data.Audio;
 import data.Humidity;
 import data.Luminosity;
+import data.Sensor;
 import data.Temperature;
 
 public class UpdateSensorData 
@@ -15,6 +16,7 @@ public class UpdateSensorData
 	protected AtmPressure atmPressure;
 	protected Temperature temperature;
 	protected Luminosity  luminosity;
+	protected Sensor sensor;
 	private double audioValue;
 	private double humidityValue;
 	private double atmPressureValue;
@@ -45,7 +47,7 @@ public class UpdateSensorData
 	
 	public void update(double audioValue, double humidityValue,
 			double atmPressureValue, double temperatureValue,
-			double luminosityValue,long id)
+			double luminosityValue, long id)
 	{   
 		Connection con= Connection.getInstance();
 		//update audio
@@ -77,6 +79,13 @@ public class UpdateSensorData
 		luminosity.setValue(luminosityValue);
 		con.updateLuminosity(luminosity);
 		System.out.println(con.readLuminosity(id).getValue());
+		
+		//update sensor
+		sensor = con.readSensor(id);
+		sensor.setTimestamp(util.DateUtil.getLocalDate());
+		con.updateSensor(sensor);
+		
+		
 		
 	}
 }

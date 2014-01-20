@@ -27,7 +27,7 @@ public class SerialTest implements SerialPortEventListener {
 	protected double audio;
 	protected double humidity;
 	protected  double atmPress;
-	protected long sensorId =1;
+	protected long sensorId;
 	protected UpdateSensorData updateSensorData;
 
 	
@@ -51,7 +51,8 @@ public class SerialTest implements SerialPortEventListener {
 	/** Default bits per second for COM port. */
 	private static final int DATA_RATE = 9600;
 
-	public void initialize() {
+	public void initialize(long sensorId) {
+		this.sensorId = sensorId;
 		CommPortIdentifier portId = null;
 		Enumeration portEnum = CommPortIdentifier.getPortIdentifiers();
 
