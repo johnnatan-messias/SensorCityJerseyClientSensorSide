@@ -26,7 +26,7 @@ public class Main {
 		}
 		System.out.println(Connection.getInstance().getServer());
 
-		//System.setProperty("gnu.io.rxtx.SerialPorts", "/dev/ttyACM0");
+		System.setProperty("gnu.io.rxtx.SerialPorts", "/dev/ttyACM0");
 		switch (idx) {
 		case 1:
 			SetInitialDatabase sensor1 = new SetInitialDatabase(id1);

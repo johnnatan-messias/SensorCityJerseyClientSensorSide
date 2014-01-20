@@ -4,6 +4,7 @@ import Connections.Connection;
 import data.Address;
 import data.AtmPressure;
 import data.Audio;
+import data.GPS;
 import data.Humidity;
 import data.Luminosity;
 import data.Sensor;
@@ -51,6 +52,14 @@ public class SetInitialDatabase {
 		luminosity.setId(id);
 		luminosity.setValue(0);
 		con.createLuminosity(luminosity);
+		
+		//Create GPS
+		GPS gps = new GPS();
+		gps.setId(id);
+		gps.setLatitude(47.47353);
+		gps.setLongitude(19.05763);
+		con.createGPS(gps);
+		
 
 		// Create Address
 		Address address = new Address();
