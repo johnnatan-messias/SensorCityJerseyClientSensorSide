@@ -42,8 +42,8 @@ public class Connection {
 	public void setServer(String ip, int port) {
 		URL = "http://" + ip + ":" + port + "/EJBSensorCity/rest/";
 	}
-	
-	public String getServer(){
+
+	public String getServer() {
 		return this.URL;
 	}
 
@@ -359,6 +359,50 @@ public class Connection {
 				.target(URL + "user/get/bydocument?document=" + document);
 		Users user = target.request(MediaType.APPLICATION_XML).get(Users.class);
 		return user;
+	}
+
+	public void createSensor(Sensor sensor) {
+		target = client.target(URL + "sensor");
+		target.request().post(Entity.entity(sensor, MediaType.APPLICATION_XML),
+				Sensor.class);
+
+	}
+
+	public Sensor readSensor(long id) {
+		target = client.target(URL + "sensor/get?id=" + id);
+		Sensor sensor = target.request(MediaType.APPLICATION_XML).get(
+				Sensor.class);
+		return sensor;
+
+	}
+
+	public void updateSensor(Sensor sensor) {
+		target = client.target(URL + "sensor");
+		target.request().put(Entity.entity(sensor, MediaType.APPLICATION_XML),
+				Sensor.class);
+	}
+
+	public void deleteSensor(long id) {
+		target = client.target(URL + "sensor/del?id=" + id);
+		target.request().delete();
+
+	}
+
+	public List<Sensor> findSensor() {
+		target = client.target(URL + "sensor/get/sensor");
+		GenericType<List<Sensor>> list = new GenericType<List<Sensor>>() {
+		};
+		List<Sensor> sensors = target.request(MediaType.APPLICATION_XML).get(
+				list);
+		return sensors;
+	}
+
+	public Sensor findSensorByName(String name) {
+
+		target = client.target(URL + "sensor/get/byname?name=" + name);
+		Sensor sensor = target.request(MediaType.APPLICATION_XML).get(
+				Sensor.class);
+		return sensor;
 	}
 
 }
