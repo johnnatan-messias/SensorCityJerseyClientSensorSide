@@ -9,13 +9,12 @@ import data.Luminosity;
 import data.Sensor;
 import data.Temperature;
 
-public class UpdateSensorData 
-{
+public class UpdateSensorData {
 	protected Audio audio;
 	protected Humidity humidity;
 	protected AtmPressure atmPressure;
 	protected Temperature temperature;
-	protected Luminosity  luminosity;
+	protected Luminosity luminosity;
 	protected Sensor sensor;
 	private double audioValue;
 	private double humidityValue;
@@ -25,9 +24,10 @@ public class UpdateSensorData
 	private long id;
 	protected SerialTest serialTest;
 	protected Connection con;
-	
-	
-	
+
+	public UpdateSensorData() {
+
+	}
 
 	public UpdateSensorData(double audioValue, double humidityValue,
 			double atmPressureValue, double temperatureValue,
@@ -40,52 +40,44 @@ public class UpdateSensorData
 		this.luminosityValue = luminosityValue;
 	}
 
-	public UpdateSensorData()
-	{
-		
-	}
-	
 	public void update(double audioValue, double humidityValue,
 			double atmPressureValue, double temperatureValue,
-			double luminosityValue, long id)
-	{   
-		Connection con= Connection.getInstance();
-		//update audio
+			double luminosityValue, long id) {
+		Connection con = Connection.getInstance();
+		// update audio
 		audio = con.readAudio(id);
 		audio.setValue(audioValue);
 		con.updateAudio(audio);
 		System.out.println(con.readAudio(id).getValue());
-		
-		//update humidity
+
+		// update humidity
 		humidity = con.readHumidity(id);
 		humidity.setValue(humidityValue);
 		con.updateHumidity(humidity);
 		System.out.println(con.readHumidity(id).getValue());
-		
-		//update atemPressure
+
+		// update atemPressure
 		atmPressure = con.readAtmPressure(id);
 		atmPressure.setValue(atmPressureValue);
 		con.updateAtmPressure(atmPressure);
 		System.out.println(con.readAtmPressure(id).getValue());
-		
-		//update tempereture 
+
+		// update tempereture
 		temperature = con.readTemperature(id);
 		temperature.setValue(temperatureValue);
 		con.updateTemperature(temperature);
 		System.out.println(con.readTemperature(id).getValue());
-		
-		//update luminosity
+
+		// update luminosity
 		luminosity = con.readLuminosity(id);
 		luminosity.setValue(luminosityValue);
 		con.updateLuminosity(luminosity);
 		System.out.println(con.readLuminosity(id).getValue());
-		
-		//update sensor
+
+		// update sensor
 		sensor = con.readSensor(id);
 		sensor.setTimestamp(util.DateUtil.getLocalDate());
 		con.updateSensor(sensor);
-		
-		
-		
+
 	}
 }
