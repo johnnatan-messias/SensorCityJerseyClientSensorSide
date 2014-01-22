@@ -11,9 +11,9 @@ public class DateUtil {
 		// SimpleDateFormat dateFormat = new SimpleDateFormat("dd/mm/aaaa");
 		return new Date(new java.util.Date().getTime());
 	}
-	
-	public static java.util.Date getLocalDate() {
+
+	public static java.sql.Date getLocalDate() {
 		// SimpleDateFormat dateFormat = new SimpleDateFormat("dd/mm/aaaa");
-		return new java.util.Date();
+		return new java.sql.Date(new java.util.Date().getTime());
 	}
 }

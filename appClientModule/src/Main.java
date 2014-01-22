@@ -1,7 +1,7 @@
 package src;
 
-import Connections.Connection;
 import sensor.SerialTest;
+import Connections.Connection;
 
 public class Main {
 
