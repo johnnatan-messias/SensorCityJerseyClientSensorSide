@@ -11,6 +11,7 @@ public class Main {
 		Connection con = Connection.getInstance();
 		System.out.println(util.DateUtil.getLocalDate());
 		con.setServer("200.239.138.155", 44583);
+		// con.setServer("192.168.1.22", 8080);
 		id = Integer.valueOf(args[0]);
 		System.out.println(Connection.getInstance().getServer());
 
