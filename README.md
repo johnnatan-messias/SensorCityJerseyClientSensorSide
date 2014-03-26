@@ -1,0 +1,3 @@
+SensorCityJerseyClientSensorSide
+================================
+GPL2
